@@ -107,48 +107,52 @@ while(True):
     secondHand = [cardDeck.pop(),cardDeck.pop()]
     player1.play(firstHand)
     House.play(secondHand)
+    print("Enter the Keyword 'Exit' anytime to exit the game")
+    Bet = (input("Please enter your Bet: "))
 
-    bet = int(input("Please enter your Bet: "))
-
-    player1.Bet(bet)
-    printHouse(House)
-    print(player1)
-
-    if player1.hasBjack():
-        if House.hasBjack():
-            player1.tie()
-        else:
-            player1.win(True)
-            print("Player 1 Wins")
+    if Bet.upper() == "EXIT":
+        break
     else:
-        while(player1.score < 21):
-            action = input("Do you want another card?(y/n): ")
-            if action == "y":
-                player1.hit(cardDeck.pop())
-                print(player1)
-                printHouse(House)
-            else:
-                break
-        if player1.score > 21:
-            print("Oops, you busted")
-            player1.win(False)
-        else:
-            while(House.score < 16):
-                House.hit(cardDeck.pop())
-                print(House)
-            if player1.score > 21:
-                if House.score > 21:
-                    player1.tie()
-                else:
-                    player1.win(False)
-            elif player1.score > House.score:
-                player1.win(True)
-            elif player1.score == House.score:
+        bet = int(Bet)
+        player1.Bet(bet)
+        printHouse(House)
+        print(player1)
+
+        if player1.hasBjack():
+            if House.hasBjack():
                 player1.tie()
             else:
-                if House.score > 21:
-                    player1.win(True)
+                player1.win(True)
+                print("Player 1 Wins")
+        else:
+            while(player1.score < 21):
+                action = input("Do you want another card?(y/n): ")
+                if action == "y":
+                    player1.hit(cardDeck.pop())
+                    print(player1)
+                    printHouse(House)
                 else:
-                    player1.win(False)
+                    break
+            if player1.score > 21:
+                print("Oops, you busted")
+                player1.win(False)
+            else:
+                while(House.score < 16):
+                    House.hit(cardDeck.pop())
+                    print(House)
+                if player1.score > 21:
+                    if House.score > 21:
+                        player1.tie()
+                    else:
+                        player1.win(False)
+                elif player1.score > House.score:
+                    player1.win(True)
+                elif player1.score == House.score:
+                    player1.tie()
+                else:
+                    if House.score > 21:
+                        player1.win(True)
+                    else:
+                        player1.win(False)
 
-    print("Money Left: ", player1.Money)
+        print("Money Left: ", player1.Money)
