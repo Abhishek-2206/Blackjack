@@ -111,6 +111,15 @@ while(True):
     Bet = (input("Please enter your Bet: "))
 
     if Bet.upper() == "EXIT":
+        if player1.Money > 100:
+            print("You came in with 100 and going back with: ",player1.Money)
+            print("You made yourself a little rich today!")
+        elif player1.Money < 100:
+            print("You came in with 100 and going back with: ", player1.Money)
+            print("Hard Luck today HUH!")
+        else:
+            print("You came in with 100 and going back with: ", player1.Money)
+            print("You were neutral, nothing gained or lost!")
         break
     else:
         bet = int(Bet)
