@@ -7,7 +7,7 @@ def createDeck():
 
     faceValues = ["A","J","K","Q"]
 
-    for i in range(4): #4 different suits
+    for i in range(4): #4 different suits of a card deck
         for card in range(2,11):
             Deck.append(str(card))
         for card in faceValues:
